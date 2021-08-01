@@ -3,11 +3,21 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-def crud_add_recipe(name, rating, difficulty, recipe_type, prep_time, main_ingredients, recipe_link):
+def crud_add_recipe(data):
     conn = sqlite3.connect('cook50.db')
-    cur = con.cursor()
-    print("I am in a crud function")
-    print(name)
+    c = conn.cursor()
+    keys = "(name, rating, difficulty, type, prep_time, main_ingredients, recipe_link)" 
+    values = "('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(data['n'], data['r'], data['d'], data['rt'], data['pt'], data['mi'], data['rl'])
+    sql = "INSERT INTO recipe {} VALUES {}".format(keys, values)
+    try:
+        c.execute(sql)
+        conn.commit()
+    except sqlite3.Error as e:
+        print("An error occured:" , e.args[0])
+        return False
+
+    conn.close()
+    return True
 
 
 @app.route('/')
@@ -16,21 +26,19 @@ def home():
 
 @app.route("/add_recipe", methods=["POST"])
 def add_recipe():
-    if request.method != "POST":
-        return "Wrong Method"
-
-    data = {}
-    data["name"] = request.form["name"]
-    data["rating"] = request.form["rating"]
-    data["difficulty"] = request.form["difficulty"]
-    data["recipe_type"] = request.form["recipe_type"]
-    data["prep_time"] = request.form["prep_time"]
-    data["main_ingredients"] = request.form["main_ingredients"]
-    data["recipe_link"] = request.form["recipe_link"]
-    crud_add_recipe(**data)
-
-    return "Testing"
+    data = {
+        "n": request.form["n"],
+        "r": request.form["r"],
+        "d": request.form["d"],
+        "rt": request.form["rt"],
+        "pt": request.form["pt"],
+        "mi": request.form["mi"],
+        "rl": request.form["rl"]
+    }
+    if crud_add_recipe(data):
+        return "Adding successfully\n"
+    else:
+        return "Error"
     
-
 if __name__=="__main__":
     app.run(debug=True)
