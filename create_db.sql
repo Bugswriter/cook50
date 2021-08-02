@@ -1,7 +1,6 @@
 -- Cook50 Database
 
 CREATE TABLE recipe(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     rating INT NOT NULL,
     difficulty TEXT NOT NULL,
