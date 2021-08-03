@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h2>Add recipe</h2>
+  <form method="POST">
+    Name <input type="text" name="n"><br>
+    Rating <input type="number" name="r"><br>
+    Difficulty
+    <select name="d">
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
+    </select><br>
+    Recipe Type
+    <select name="rt">
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Dinner</option>
+    </select><br>
+    Prepare Type
+    <input type="number" name="pt"><br>
+    Main Ingredients
+    <input type="text" name="mi"><br>
+    Recipe URL
+    <input type="text" name="rl"><br>
+    <input type="submit" value="Add+">
+  </form>
+</div>
+{% endblock content %}

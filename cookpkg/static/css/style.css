@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Fira+Mono|Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=MonteCarlo&family=Roboto&family=STIX+Two+Text&display=swap');
 
 /************************
  *
@@ -15,7 +15,8 @@
     --color03: #FF7F50;
     --color04: #FF6347;
     --color05: #FF4500;
-    --fontsize: 16px;
+    --fontsize: 18px;
+    --font: "Roboto"
 }
 
 /* HTML , BODY & Some LAYOUT CSS */
@@ -31,14 +32,13 @@ html {
 }
 */
 
-
 body{
     color: black;
     min-height: 100vh;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: var(--font), sans-serif;
     font-size: var(--fontsize);
 }
 
@@ -46,7 +46,6 @@ body *{
     margin: 0;
     padding: 0;
 }
-
 
 body a{
     color: var(--color05);
@@ -79,18 +78,21 @@ header h1 span{
     background-color: var(--color05);
     margin: auto;
     width: fit-content;
+    border-radius: 10px 1px;
+    padding: 5px;
+    font-size: 75%;
 }
 
 .nav a{
     color: white;
     font-size: 140%;
-    padding: 0;
 }
 
 .nav a:hover{
     background-color: var(--color01);
     color: white;
     border-radius: 6px 1px;
+    text-decoration: underline;
 }
 
 .nav .active{
@@ -116,14 +118,12 @@ footer{
     margin: 20px auto;
 }
 
-
 /************************
  *
  * home.html CSS
  * Writter by BugsWriter
  *
  ************************/
-
 
 img{
     margin: auto;
@@ -133,13 +133,10 @@ p{
     padding: 10px;
 }
 
-
-
 form.search-form input[type=text] {
     padding: 6px;
     border: 1px solid grey;
-    width: 400px;
-    
+    width: 220px;
 }
 
 form.search-form button {
@@ -159,7 +156,6 @@ form.search-form::after {
     content: "";
     clear: both;
 }
-
 
 /************************
  *
@@ -198,6 +194,10 @@ form.search-form::after {
     color: white;
 }
 
+.result-box tr:nth-child(even) a{
+    color: white;
+}
+
 .result-box tr:nth-child(even){
     background-color: var(--color02);
     color: white;
@@ -209,4 +209,21 @@ form.search-form::after {
     border-radius: 3px;
 }
 
+/**************
+* Form CSS
+**************/
 
+form input[type=text] {
+    padding: 6px;
+    width: 220px;
+}
+
+form select{
+    padding: 6px;
+    width: 220px;
+}
+
+form input[type=submit]{
+    padding: 5px;
+    font-size: 100%;
+} 

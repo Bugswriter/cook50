@@ -28,7 +28,7 @@ def recipes():
 
 # Add new recipe
 #==================================================
-@app.route("/add_recipe", methods=["POST"])
+@app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
         data = {
@@ -41,9 +41,9 @@ def add_recipe():
             "rl": request.form["rl"]
         }
         crud_add_recipe(data)
-        return "Redirect to /recipes\n"
+        return redirect(url_for('recipes'))
 
-    return "Form to add recipe\n"
+    return render_template("add_recipe.html")
 
 
 # Delete recipe
