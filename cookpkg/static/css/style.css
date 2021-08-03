@@ -213,6 +213,20 @@ form.search-form::after {
 * Form CSS
 **************/
 
+form {
+    
+}
+
+
+form .field{
+    border: 1px solid black;
+    width: 600px;
+}
+
+form label{
+    border: 1px solid black;
+}
+
 form input[type=text] {
     padding: 6px;
     width: 220px;

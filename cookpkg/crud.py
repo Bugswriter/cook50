@@ -31,7 +31,7 @@ def crud_get_recipes(offset):
     conn.close()
     return data
 
-# CRUD function for deleting recipe
+# CRUD function for deleting
 #==================================================
 def crud_delete_recipe(rowid):
     conn = sqlite3.connect(DB_NAME)
@@ -44,4 +44,3 @@ def crud_delete_recipe(rowid):
         print("An error occured: ", e.args[0])
 
     conn.close()
-
