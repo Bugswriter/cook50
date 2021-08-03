@@ -3,45 +3,27 @@
 <div class="container">
   <h2>Add recipe</h2>
   <form method="POST">
-    <div class="field">
-      <label>Name</label>
-      <input type="text" name="n">
-    </div>
-    <div class="field">
-      <label>Rating</label>
-      <input type="number" name="r">
-    </div>
-    <div class="field">
-      <label>Difficulty</label>
-      <select name="d">
-	<option>Easy</option>
-	<option>Medium</option>
-	<option>Hard</option>
-      </select><br>
-    </div>
-    <div class="field">
-      <label>Recipe Type</label>
-      <select name="rt">
-	<option>Breakfast</option>
-	<option>Lunch</option>
-	<option>Dinner</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Prepare Type</label>
-      <input type="number" name="pt"><br>
-    </div>
-    <div class="field">
-      <label>Main Ingredients</label>
-      <input type="text" name="mi"><br>
-    </div>
-    <div class="field">
-      <label>Recipe URL</label>
-      <input type="text" name="rl"><br>
-    </div>
-    <div>
-      <input type="submit" value="Add+">
-    </div>
+    Name <input type="text" name="n"><br>
+    Rating <input type="number" name="r"><br>
+    Difficulty
+    <select name="d">
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
+    </select><br>
+    Recipe Type
+    <select name="rt">
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Dinner</option>
+    </select><br>
+    Prepare Type
+    <input type="number" name="pt"><br>
+    Main Ingredients
+    <input type="text" name="mi"><br>
+    Recipe URL
+    <input type="text" name="rl"><br>
+    <input type="submit" value="Add+">
   </form>
 </div>
 {% endblock content %}
