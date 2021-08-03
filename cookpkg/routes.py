@@ -1,6 +1,6 @@
 from cookpkg import app
 from cookpkg.crud import *
-from flask import request, render_template
+from flask import request, render_template, redirect, url_for
 
 #==================
 # Route Functions #
@@ -10,7 +10,7 @@ from flask import request, render_template
 #==================================================
 @app.route('/')
 def home():
-    return render_template("layout.html")
+    return render_template("home.html")
 
 
 # Get recipe data
@@ -23,9 +23,8 @@ def recipes():
         offset = 10 * (page - 1)
 
     data = crud_get_recipes(offset)
-    for row in data:
-        print(row)
-    return "We got data\n"
+    return render_template("recipe_list.html", data=data)
+
 
 # Add new recipe
 #==================================================
@@ -54,6 +53,6 @@ def delete_recipe():
     if request.args.get("id"):
         rowid = int(request.args.get("id"))
         crud_delete_recipe(rowid)
-        return "1"
+        return redirect(url_for('recipes'))
 
-    return "0" 
+    abort(500)

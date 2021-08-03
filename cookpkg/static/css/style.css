@@ -9,6 +9,15 @@
  ************************/
 
 
+:root {
+    --color01: #FFA500;
+    --color02: #FF8C00;
+    --color03: #FF7F50;
+    --color04: #FF6347;
+    --color05: #FF4500;
+    --fontsize: 16px;
+}
+
 /* HTML , BODY & Some LAYOUT CSS */
 
 /*
@@ -29,10 +38,8 @@ body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 62.9%;
     font-family: 'Fira Sans', sans-serif;
-    display: flex;
-    flex-direction: column;
+    font-size: var(--fontsize);
 }
 
 body *{
@@ -42,87 +49,71 @@ body *{
 
 
 body a{
+    color: var(--color05);
     text-decoration: none;
-    color: #E8175D;
 }
 
 body a:hover{
-    text-decoration: underline;
+    color: var(--color01);
 }
 
 /* HEADER CSS */
 
-header{
-    padding: 15px;
-    display: flex;
-}
-
 header h1{
+    width: fit-content;
     margin: auto;
-    font-size: 3em;
+    padding: 10px;
 }
 
 header h1 span{
     color: white;
-    background-color: #E8175D;
+    background-color: var(--color05);
     border-radius: 6px 1px;
     font-family: 'Dancing Script', cursive;
-    padding: 5px;
+    padding: 3px;
 }
-
-
 
 /* NAV BAR CSS */
 
 .nav{
-    border: 1px solid white;
-    font-size: 2.2em;
-    list-style: none;
-    background-color: #474747;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
+    background-color: var(--color05);
+    margin: auto;
+    width: fit-content;
 }
 
 .nav a{
     color: white;
+    font-size: 140%;
+    padding: 0;
 }
 
 .nav a:hover{
-    background-color: #E8175D;
+    background-color: var(--color01);
+    color: white;
     border-radius: 6px 1px;
 }
 
 .nav .active{
-    background-color: #CC527A;
+    color: var(--color01);
 }
 
 .nav li{
-    padding: 4px;
-    margin-right: 40px; 
+    display: inline;
+    margin: 0px 20px;
 }
 
 /* CONTAINER & MAIN SECTION (HALF) CSS */
 
 .container{
-    font-size: 1.6em;
-    flex: 1;
-    display: flex;
+    font-size: 100%;
 }
-
-.main-section{
-    flex: 1;
-    display: flex;
-}
-
-
 
 /* FOOTER CSS */
 
 footer{
-    font-size: 1.7em;
     padding: 5px;
-    text-align: center;
+    width: fit-content;
+    margin: 20px auto;
 }
 
 
@@ -134,57 +125,40 @@ footer{
  ************************/
 
 
-.homepage-content-wrapper{
-    margin: auto;
-    margin-top: 12%;
-    display: flex;
-    flex-direction: column;
-}
-
-.homepage img{
+img{
     margin: auto;
 }
 
-.homepage p{
+p{
     padding: 10px;
 }
 
-form.search-form{
-    -moz-box-shadow:    2px 2px 3px 0px #ccc;
-    -webkit-box-shadow: 2px 2px 3px 0px #ccc;
-    box-shadow:         2px 2px 3px 0px #ccc;
-}
+
 
 form.search-form input[type=text] {
-    padding: 10px;
-    font-size: 17px;
+    padding: 6px;
     border: 1px solid grey;
-    float: left;
-    width: 500px;
+    width: 400px;
     
 }
 
 form.search-form button {
-    padding: 10px;
-    background: #CC527A;
+    padding: 6px;
+    background: var(--color03);
     color: white;
-    font-size: 17px;
     border: 1px solid grey;
-    border-left: none;
     cursor: pointer;
+    border-radius: 10px 1px;
 }
 
 form.search-form button:hover {
-    background: #E8175D;
+    background: var(--color02);
 }
 
 form.search-form::after {
     content: "";
     clear: both;
-    display: table;
 }
-
-
 
 
 /************************
@@ -194,39 +168,19 @@ form.search-form::after {
  *
  ************************/
 
-.searchpage{
-    flex-direction: column;
-}
-
-
-.section-1{
-    flex: 1;
-    display: flex;
-}
-
-.section-2{
-    flex: 6;
-    display: flex;
-    justify-content: center;
-}
-
-
 .search-box{
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+}
+
+.result-box{
+    width: fit-content;
     margin: auto;
 }
 
 .result-box table{
-    font-size: 0.8em;
     border-collapse: collapse;
-    width: 1000px;
-}
-
-#heading{
-    padding: 15px;
-    text-align: center;
-    font-size: 1.5em;
-    color: black;
-    background-color: white;
 }
 
 .result-box td, th {
@@ -235,19 +189,19 @@ form.search-form::after {
 }
 
 .result-box th{
-    background-color: #474747;
+    background-color: var(--color05);
     color: white;
 }
 
 .result-box tr:nth-child(even){
-    background-color: #CC527A;
+    background-color: var(--color02);
     color: white;
 }
 
-.result-box tr:nth-child(odd){
-    background-color: #efefef;
+.result-box tr:nth-child(even){
+    background-color: var(--color02);
+    color: white;
 }
-
 
 .result-box tr:nth-child(odd) a{
     background-color: white;
@@ -256,16 +210,3 @@ form.search-form::after {
 }
 
 
-.admin{
-    justify-content: center;
-}
-
-.addbookform{
-    margin-top: 3%;
-}
-.addbookform input{
-    margin: 2px;
-    border-radius: 4px;
-    padding: 3px;
-    font-size: 22px;
-}
