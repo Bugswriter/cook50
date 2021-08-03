@@ -1,6 +1,6 @@
 from cookpkg import app
 from cookpkg.crud import *
-from flask import request
+from flask import request, render_template
 
 #==================
 # Route Functions #
@@ -10,7 +10,7 @@ from flask import request
 #==================================================
 @app.route('/')
 def home():
-    return "Welcome to the homepage\n"
+    return render_template("layout.html")
 
 
 # Get recipe data
