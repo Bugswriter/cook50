@@ -34,7 +34,7 @@ def check_login_cred(u, p):
 def crud_add_recipe(data):
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-    values = "('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(data['n'], data['r'], data['d'], data['rt'], data['pt'], data['mi'], data['rl'])
+    values = "('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(data['n'], data['r'], data['d'], data['rt'], data['pt'], data['mi'], data['rl'], data['ui'])
     sql = "INSERT INTO recipe VALUES {}".format(values)
     try:
         c.execute(sql)
@@ -46,11 +46,11 @@ def crud_add_recipe(data):
 
 # CRUD function for getting recipes
 #==================================================
-def crud_get_recipes(offset):
+def crud_get_recipes(uid, offset):
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     data = []
-    for row in c.execute("SELECT rowid, * FROM recipe LIMIT 10 OFFSET {}".format(offset)):
+    for row in c.execute("SELECT rowid, * FROM recipe WHERE user_id='{}' LIMIT 10 OFFSET {}".format(uid, offset)):
         data.append(list(row))
 
     conn.close()

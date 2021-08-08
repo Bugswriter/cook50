@@ -63,12 +63,13 @@ def recipes():
     if not request.cookies.get("user_id"):
         return redirect(url_for('login'))
 
+    uid = request.cookies.get("user_id")
     offset = 0
     if request.args.get('page'):
         page = int(request.args.get('page'))
         offset = 10 * (page - 1)
 
-    data = crud_get_recipes(offset)
+    data = crud_get_recipes(uid, offset)
     return render_template("recipe_list.html", data=data)
 
 
@@ -81,6 +82,7 @@ def add_recipe():
 
     if request.method == "POST":
         data = {
+            "ui": request.cookies.get("user_id"),
             "n": request.form["n"],
             "r": request.form["r"],
             "d": request.form["d"],

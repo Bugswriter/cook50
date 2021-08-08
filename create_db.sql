@@ -16,5 +16,14 @@ CREATE TABLE recipe(
     type TEXT NOT NULL,
     prep_time INT NOT NULL,
     main_ingredients TEXT NOT NULL,
-    recipe_link TEXT NOT NULL
+    recipe_link TEXT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES user(rowid)
+);
+
+-- SHOPPING LIST TABLE
+CREATE TABLE shopping_list(
+    item TEXT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES user(rowid)
 );
