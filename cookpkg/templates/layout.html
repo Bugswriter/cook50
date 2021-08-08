@@ -18,7 +18,7 @@
       <li class="active"><a href="/">Home</a></li>
       <li><a href="{{ url_for('recipes') }}">Cookbook</a></li>
       <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-      <li><a href="#">Shopping List</a></li>
+      <li><a href="{{ url_for('shopping_list') }}">Shopping List</a></li>
       <li><a href="#">Meal Planner</a></li>
       {% if request.cookies.get('user_id') %}
       <li><a href="/logout">Logout</a></li>
@@ -31,8 +31,7 @@
       {% block content %}{% endblock %}
     </div>
     <footer>
-      <span>Made with ❤ by <a href="https://bugswriter.com">@BugsWriter</a></span>
-      
+      <span>made with ❤ by <a href="https://bugswriter.com">@BugsWriter</a></span>
     </footer>
   </body>
 </html>

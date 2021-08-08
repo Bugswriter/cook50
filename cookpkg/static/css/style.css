@@ -15,6 +15,7 @@
     --color03: #FF7F50;
     --color04: #FF6347;
     --color05: #FF4500;
+    --color06: #FED8B1;
     --fontsize: 18px;
     --font: "Roboto"
 }
@@ -191,20 +192,14 @@ form.search-form::after {
 
 .result-box tr:nth-child(even){
     background-color: var(--color02);
-    color: white;
 }
 
-.result-box tr:nth-child(even) a{
-    color: white;
-}
 
 .result-box tr:nth-child(even){
-    background-color: var(--color02);
-    color: white;
+    background-color: var(--color06);
 }
 
 .result-box tr:nth-child(odd) a{
-    background-color: white;
     padding: 2px;
     border-radius: 3px;
 }
@@ -218,7 +213,7 @@ form.search-form::after {
     margin: 40px auto;
 }
 
-.form{
+.form , .slform{
    margin: 20px;
 }
 
@@ -227,10 +222,32 @@ form.search-form::after {
     margin: 10px;
 }
 
-.form select{
+.form select {
     width: 200px;
 }
 
-.form input[type=text], .form input[type=password]{
+.form input{
     width: 400px;
+}
+
+.form input[type=number]{
+    width: 175px;
+}
+
+.form input[type=submit]{
+    width: 425px;
+}
+
+
+.slform input{
+    width: 300px;
+    padding: 10px;
+}
+
+.slform input[type=number]{
+    width: 40px;
+}
+
+.slform input[type=submit]{
+    width: 100px;
 }

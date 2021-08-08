@@ -110,3 +110,17 @@ def delete_recipe():
         return redirect(url_for('recipes'))
 
     abort(500)
+
+
+# Shopping list
+#=================================================
+@app.route("/shopping_list", methods=["GET", "POST"])
+def shopping_list():
+    if not request.cookies.get("user_id"):
+        return redirect(url_for('login'))
+
+    if request.method == "POST":
+        crud_add_item(request.cookies.get("user_id"), request.form["item"])
+
+    sl = []
+    return render_template("shopping_list.html", shopping_list=sl)

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h2>Shopping List</h2>
+  <form method="POST" class="slform">
+    <input type="text" placeholder="Enter item...">
+    <input type="number">
+    <input type="submit" value="Add Item +">
+  </form>
+  <ul>
+    {% for item in shopping_list %}
+    <li>{{ item["item"] }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}
