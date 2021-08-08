@@ -1,5 +1,14 @@
 -- Cook50 Database
 
+-- USER TABLE
+CREATE TABLE user(
+    username TEXT UNIQUE NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    join_date TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+-- RECIPE TABLE
 CREATE TABLE recipe(
     name TEXT NOT NULL,
     rating INT NOT NULL,

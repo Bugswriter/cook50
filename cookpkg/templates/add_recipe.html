@@ -2,28 +2,23 @@
 {% block content %}
 <div class="container">
   <h2>Add recipe</h2>
-  <form method="POST">
-    Name <input type="text" name="n"><br>
-    Rating <input type="number" name="r"><br>
-    Difficulty
+  <form method="POST" class="form">
+    <input type="text" name="n" placeholder="Recipe Name"><br>
     <select name="d">
       <option>Easy</option>
       <option>Medium</option>
       <option>Hard</option>
-    </select><br>
-    Recipe Type
+    </select>
     <select name="rt">
       <option>Breakfast</option>
       <option>Lunch</option>
       <option>Dinner</option>
     </select><br>
-    Prepare Type
-    <input type="number" name="pt"><br>
-    Main Ingredients
-    <input type="text" name="mi"><br>
-    Recipe URL
-    <input type="text" name="rl"><br>
-    <input type="submit" value="Add+">
+    <input type="number" name="r" placeholder="Recipe Rating">
+    <input type="number" name="pt" placeholder="Prepare Time"><br>
+    <input type="text" name="mi" placeholder="Making Ingredients"><br>
+    <input type="text" name="rl" placeholder="Recipe URL"><br>
+    <input type="submit" value="Add Recipe +">
   </form>
 </div>
 {% endblock content %}

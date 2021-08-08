@@ -1,6 +1,6 @@
 from cookpkg import app
 from cookpkg.crud import *
-from flask import request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for, flash
 
 #==================
 # Route Functions #
@@ -11,6 +11,33 @@ from flask import request, render_template, redirect, url_for
 @app.route('/')
 def home():
     return render_template("home.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        data = {
+            "u": request.form["u"],
+            "e": request.form["e"],
+            "p": request.form["p"]
+        }
+        register_user(data)
+        return redirect(url_for('login'))
+
+    return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+       username = request.form["u"] 
+       password = request.form["p"] 
+       if check_login_cred(username, password):
+           return redirect(url_for('recipes'))
+       else:
+           flash("Incorrent Login Credentials")
+
+    return render_template("login.html")
 
 
 # Get recipe data

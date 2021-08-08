@@ -115,7 +115,7 @@ header h1 span{
 footer{
     padding: 5px;
     width: fit-content;
-    margin: 20px auto;
+    margin: auto;
 }
 
 /************************
@@ -213,17 +213,24 @@ form.search-form::after {
 * Form CSS
 **************/
 
-form input[type=text] {
-    padding: 6px;
-    width: 220px;
+.container{
+    width: fit-content;
+    margin: 40px auto;
 }
 
-form select{
-    padding: 6px;
-    width: 220px;
+.form{
+   margin: 20px;
 }
 
-form input[type=submit]{
-    padding: 5px;
-    font-size: 100%;
-} 
+.form input, .form select{
+    padding: 10px;
+    margin: 10px;
+}
+
+.form select{
+    width: 200px;
+}
+
+.form input[type=text], .form input[type=password]{
+    width: 400px;
+}
