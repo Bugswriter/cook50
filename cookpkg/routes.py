@@ -1,6 +1,6 @@
 from cookpkg import app
 from cookpkg.crud import *
-from flask import request, render_template, redirect, url_for, flash
+from flask import request, render_template, redirect, url_for, flash, make_response
 
 #==================
 # Route Functions #
@@ -15,6 +15,9 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.cookies.get("user_id"):
+        return redirect(url_for("recipes"))
+
     if request.method == "POST":
         data = {
             "u": request.form["u"],
@@ -29,21 +32,37 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.cookies.get("user_id"):
+        return redirect(url_for('recipes'))
+
     if request.method == "POST":
        username = request.form["u"] 
        password = request.form["p"] 
-       if check_login_cred(username, password):
-           return redirect(url_for('recipes'))
-       else:
-           flash("Incorrent Login Credentials")
-
+       user = check_login_cred(username, password)
+       if user:
+           res = make_response(redirect(url_for('recipes')))
+           res.set_cookie("user_id", str(user[0]))
+           return res
+                                   
     return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    res = make_response(redirect(url_for("home")))
+    if request.cookies.get("user_id"):
+        res.delete_cookie("user_id")
+
+    return res
 
 
 # Get recipe data
 #==================================================
 @app.route("/recipes", methods=["GET"])
 def recipes():
+    if not request.cookies.get("user_id"):
+        return redirect(url_for('login'))
+
     offset = 0
     if request.args.get('page'):
         page = int(request.args.get('page'))
@@ -57,6 +76,9 @@ def recipes():
 #==================================================
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    if not request.cookies.get("user_id"):
+        return redirect(url_for('login'))
+
     if request.method == "POST":
         data = {
             "n": request.form["n"],
@@ -77,6 +99,9 @@ def add_recipe():
 #==================================================
 @app.route("/delete_recipe", methods=["GET"])
 def delete_recipe():
+    if not request.cookies.get("user_id"):
+        return redirect(url_for('login'))
+
     if request.args.get("id"):
         rowid = int(request.args.get("id"))
         crud_delete_recipe(rowid)
