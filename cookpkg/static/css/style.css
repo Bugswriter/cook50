@@ -82,6 +82,7 @@ header h1 span{
     border-radius: 10px 1px;
     padding: 5px;
     font-size: 75%;
+    border: 1px solid black;
 }
 
 .nav a{
@@ -188,10 +189,13 @@ form.search-form::after {
 .result-box th{
     background-color: var(--color05);
     color: white;
+    border-top: 1px solid black;
 }
 
 .result-box tr:nth-child(even){
     background-color: var(--color02);
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
 
@@ -237,7 +241,6 @@ form.search-form::after {
 .form input[type=submit]{
     width: 425px;
 }
-
 
 .slform input{
     width: 300px;
