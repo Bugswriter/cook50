@@ -122,6 +122,5 @@ def shopping_list():
     if request.method == "POST":
         crud_add_item(request.cookies.get("user_id"), request.form["item"])
 
-    # one comment
     sl = []
     return render_template("shopping_list.html", shopping_list=sl)
