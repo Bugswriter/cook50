@@ -1,42 +1,42 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="container">
-  <div class="search-box">
-    <form class="search-form result-page-search-form" action="/search" method="GET" id="must-field">
-      <input type="text" placeholder="Search recipe..." name="query">
-      <button type="submit" onclick="return empty()">&nbsp<i class="fa fa-search"></i>&nbsp</button>
-    </form>
-  </div>
-  <div class="result-box">
-    <table>
-      {% if request.args.get('query') %}
-      <tr>
-	<td colspan="5" id="heading">Showing result for "{{ request.args.get('query') }}"</td>
-      </tr>
-      {% endif %}
-      <tr>
-	<th>Name</th>
-	<th>Rating</th>
-	<th>Difficulty</th>
-	<th>Type</th>
-	<th>Prep Time</th>
-	<th>Main Ingredients</th>
-	<th>Full Recipe</th>
-	<th>Delete</th>
-      </tr>
-      {% for recipe in data %}
-      <tr>
-	<td>{{ recipe[1] }}</td>
-	<td>{{ recipe[2] }}/10</td>
-	<td>{{ recipe[3] }}</td>
-	<td>{{ recipe[4] }}</td>
-	<td>{{ recipe[5] }} min</td>
-	<td>{{ recipe[6] }}</td>
-	<td><a href="https://{{ recipe[7] }}">👀 view</a></td>
-	<td><a href="/delete_recipe?id={{ recipe[0] }}">❌</a></td>
-      </tr>
-      {% endfor %}
-    </table> 
-  </div>
+<div class="search-box">
+  <form class="slform" action="/search" method="GET" id="must-field">
+    <input type="text" placeholder="Search recipe..." name="query">
+    <input type="submit" value="Search">
+  </form>
+</div>
+<div class="result-box">
+  <table>
+    {% if request.args.get('query') %}
+    <tr>
+      <td colspan="5" id="heading">
+	Showing result for "{{ request.args.get('query') }}"
+      </td>
+    </tr>
+    {% endif %}
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Difficulty</th>
+      <th>Type</th>
+      <th>Prep Time</th>
+      <th>Main Ingredients</th>
+      <th>Full Recipe</th>
+      <th>Delete</th>
+    </tr>
+    {% for recipe in data %}
+    <tr>
+      <td>{{ recipe[1] }}</td>
+      <td>{{ recipe[2] }}/10</td>
+      <td>{{ recipe[3] }}</td>
+      <td>{{ recipe[4] }}</td>
+      <td>{{ recipe[5] }} min</td>
+      <td>{{ recipe[6] }}</td>
+      <td><a href="https://{{ recipe[7] }}">👀 view</a></td>
+      <td><a href="/delete_recipe?id={{ recipe[0] }}">❌</a></td>
+    </tr>
+    {% endfor %}
+  </table> 
 </div>
 {% endblock content %}

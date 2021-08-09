@@ -21,31 +21,11 @@
 }
 
 /* HTML , BODY & Some LAYOUT CSS */
-
-/*
-html {
-  height: 100%;
-  background: url(images/) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-*/
-
 body{
-    color: black;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+    width: fit-content;
+    margin: auto;
     font-family: var(--font), sans-serif;
     font-size: var(--fontsize);
-}
-
-body *{
-    margin: 0;
-    padding: 0;
 }
 
 body a{
@@ -76,40 +56,26 @@ header h1 span{
 /* NAV BAR CSS */
 
 .nav{
+    border-radius: 6px 1px;
     background-color: var(--color05);
     margin: auto;
     width: fit-content;
-    border-radius: 10px 1px;
     padding: 5px;
-    font-size: 75%;
-    border: 1px solid black;
 }
 
 .nav a{
     color: white;
-    font-size: 140%;
 }
 
 .nav a:hover{
     background-color: var(--color01);
-    color: white;
     border-radius: 6px 1px;
-    text-decoration: underline;
-}
-
-.nav .active{
-    color: var(--color01);
+    color: white;
 }
 
 .nav li{
     display: inline;
     margin: 0px 20px;
-}
-
-/* CONTAINER & MAIN SECTION (HALF) CSS */
-
-.container{
-    font-size: 100%;
 }
 
 /* FOOTER CSS */
@@ -120,61 +86,16 @@ footer{
     margin: auto;
 }
 
-/************************
- *
- * home.html CSS
- * Writter by BugsWriter
- *
- ************************/
-
-img{
-    margin: auto;
-}
-
-p{
-    padding: 10px;
-}
-
-form.search-form input[type=text] {
-    padding: 6px;
-    border: 1px solid grey;
-    width: 220px;
-}
-
-form.search-form button {
-    padding: 6px;
-    background: var(--color03);
-    color: white;
-    border: 1px solid grey;
-    cursor: pointer;
-    border-radius: 10px 1px;
-}
-
-form.search-form button:hover {
-    background: var(--color02);
-}
-
-form.search-form::after {
-    content: "";
-    clear: both;
-}
-
-/************************
- *
- * search_result.html CSS
- * Writter by BugsWriter
- *
- ************************/
-
 .search-box{
+    padding: 10px;
     width: fit-content;
-    padding: 20px;
     margin: auto;
 }
 
 .result-box{
     width: fit-content;
     margin: auto;
+    font-size: 90%;
 }
 
 .result-box table{
@@ -187,8 +108,8 @@ form.search-form::after {
 }
 
 .result-box th{
-    background-color: var(--color05);
     color: white;
+    background-color: var(--color05);
     border-top: 1px solid black;
 }
 
@@ -252,5 +173,5 @@ form.search-form::after {
 }
 
 .slform input[type=submit]{
-    width: 100px;
+    width: fit-content;
 }
