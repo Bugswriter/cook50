@@ -24,6 +24,7 @@ CREATE TABLE recipe(
 -- SHOPPING LIST TABLE
 CREATE TABLE shopping_list(
     item TEXT NOT NULL,
+    quantity INT,
     user_id INT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES user(rowid)
 );

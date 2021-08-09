@@ -3,14 +3,27 @@
 <div class="container">
   <h2>Shopping List</h2>
   <form method="POST" class="slform">
-    <input type="text" placeholder="Enter item...">
-    <input type="number">
+    <input type="text" name="item" placeholder="Enter item...">
+    <input type="number" name="quan">
     <input type="submit" value="Add Item +">
   </form>
-  <ul>
-    {% for item in shopping_list %}
-    <li>{{ item["item"] }}</li>
-    {% endfor %}
-  </ul>
+  <div class="result-box">
+    <table>
+      <tr>
+	<th>Item</th>
+	<th>Quantity</th>
+	<th>Checklist</th>
+	<th>Delete</th>
+      </tr>
+      {% for item in sl %}
+      <tr>
+	<td>{{ item[1] }}</td>
+	<td>{{ item[2] }}</td>
+	<td><input type="checkbox"></td>
+	<td><a href="/delete_item?id={{ item[0] }}">❌</a></td>
+      </tr>
+      {% endfor %}
+    </table> 
+  </div>
 </div>
 {% endblock content %}

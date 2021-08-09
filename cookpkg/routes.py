@@ -36,14 +36,14 @@ def login():
         return redirect(url_for('recipes'))
 
     if request.method == "POST":
-       username = request.form["u"] 
-       password = request.form["p"] 
+       username = request.form["u"]
+       password = request.form["p"]
        user = check_login_cred(username, password)
        if user:
            res = make_response(redirect(url_for('recipes')))
            res.set_cookie("user_id", str(user[0]))
            return res
-                                   
+
     return render_template("login.html")
 
 
@@ -120,7 +120,25 @@ def shopping_list():
         return redirect(url_for('login'))
 
     if request.method == "POST":
-        crud_add_item(request.cookies.get("user_id"), request.form["item"])
+        uid = request.cookies.get("user_id")
+        item = request.form["item"]
+        quan = request.form["quan"]
+        crud_add_item(uid, item, quan)
 
-    sl = []
-    return render_template("shopping_list.html", shopping_list=sl)
+    uid = request.cookies.get("user_id")
+    sl = crud_get_item(uid)
+    return render_template("shopping_list.html", sl=sl)
+
+# Delete item
+#==================================================
+@app.route("/delete_item", methods=["GET"])
+def delete_item():
+    if not request.cookies.get("user_id"):
+        return redirect(url_for('login'))
+
+    if request.args.get("id"):
+        rowid = int(request.args.get("id"))
+        crud_delete_item(rowid)
+        return redirect(url_for('shopping_list'))
+
+    abort(500)
