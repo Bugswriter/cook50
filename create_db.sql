@@ -28,3 +28,14 @@ CREATE TABLE shopping_list(
     user_id INT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES user(rowid)
 );
+
+
+-- MEAL PLANNER TABLE
+CREATE TABLE meal_planner(
+    day TEXT NOT NULL,
+    meal_type TEXT NOT NULL,
+    recipe_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(recipe_id) REFERENCES recipe(rowid)
+    FOREIGN KEY(user_id) REFERENCES user(rowid)
+)

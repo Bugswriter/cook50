@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Meal Planner</h2>
+<form method="POST" class="form slform">
+  <select name="d">
+    <option>Monday</option>
+    <option values="Tuesday">Tuesday</option>
+    <option values="Wednesday">Wednesday</option>
+    <option values="Thursday">Thursday</option>
+    <option values="Friday">Friday</option>
+    <option values="Saturday">Saturday</option>
+    <option values="Sunday">Sunday</option>
+  </select>
+  <select name="mt">
+    <option value="Breakfast">Breakfast</option>
+    <option value="Lunch">Lunch</option>
+    <option value="Dinner">Dinner</option>
+  </select>
+  <select name="rid">
+    {% for recipe in recipes %}
+    <option value="{{ recipe[0] }}">{{ recipe[1] }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Add meal">
+</form>
+<div class="result-box">
+  <table>
+    <tr>
+      <th>Day</th>
+      <th>Meal type</th>
+      <th>Recipe</th>
+      <th>Delete</th>
+    </tr>
+    {% for meal in mp %}
+    <tr>
+      <td>{{ meal[1] }}</td>
+      <td>{{ meal[2] }}</td>
+      <td>{{ meal[3] }}</td>
+      <td><a href="/delete_meal?id={{ meal[0] }}">❌</a></td>
+    </tr>
+    {% endfor %}
+  </table> 
+</div>
+{% endblock content %}

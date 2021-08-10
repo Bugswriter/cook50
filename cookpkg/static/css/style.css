@@ -57,7 +57,7 @@ header h1 span{
 
 .nav{
     border-radius: 6px 1px;
-    background-color: var(--color05);
+    background-color: #307679;
     margin: auto;
     width: fit-content;
     padding: 5px;

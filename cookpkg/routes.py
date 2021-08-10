@@ -1,10 +1,9 @@
-from cookpkg import app
-from cookpkg.crud import *
-from flask import request, render_template, redirect, url_for, flash, make_response
-
 #==================
 # Route Functions #
 #==================
+from cookpkg import app
+from cookpkg.crud import *
+from flask import request, render_template, redirect, url_for, flash, make_response
 
 # Homepage route
 #==================================================
@@ -64,12 +63,7 @@ def recipes():
         return redirect(url_for('login'))
 
     uid = request.cookies.get("user_id")
-    offset = 0
-    if request.args.get('page'):
-        page = int(request.args.get('page'))
-        offset = 10 * (page - 1)
-
-    data = crud_get_recipes(uid, offset)
+    data = crud_get_recipes(uid)
     return render_template("recipe_list.html", data=data)
 
 
@@ -119,13 +113,13 @@ def shopping_list():
     if not request.cookies.get("user_id"):
         return redirect(url_for('login'))
 
+    uid = request.cookies.get("user_id")
     if request.method == "POST":
-        uid = request.cookies.get("user_id")
+
         item = request.form["item"]
         quan = request.form["quan"]
         crud_add_item(uid, item, quan)
 
-    uid = request.cookies.get("user_id")
     sl = crud_get_item(uid)
     return render_template("shopping_list.html", sl=sl)
 
@@ -142,3 +136,22 @@ def delete_item():
         return redirect(url_for('shopping_list'))
 
     abort(500)
+
+
+# Meal Planner
+@app.route("/meal_planner", methods=["GET", "POST"])
+def meal_planner():
+    if not request.cookies.get("user_id"):
+        return redirect(url_for("login"))
+
+    uid = request.cookies.get("user_id")
+    if request.method == "POST":
+        day = request.form["d"]
+        meal_type = request.form["mt"]
+        recipe = request.form["rid"]
+
+        crud_add_meal(day, meal_type, recipe, uid)
+
+    mp = crud_get_meal(uid)
+    recipes = crud_get_recipes(uid)
+    return render_template("meal_planner.html", recipes=recipes, mp=mp)

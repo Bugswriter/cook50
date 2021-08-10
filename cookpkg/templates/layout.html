@@ -18,7 +18,7 @@
       <li><a href="{{ url_for('recipes') }}">Cookbook</a></li>
       <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
       <li><a href="{{ url_for('shopping_list') }}">Shopping List</a></li>
-      <li><a href="#">Meal Planner</a></li>
+      <li><a href="{{ url_for('meal_planner') }}">Meal Planner</a></li>
       {% if request.cookies.get('user_id') %}
       <li><a href="/logout">Logout</a></li>
       {% else %}

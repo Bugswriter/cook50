@@ -47,11 +47,11 @@ def crud_add_recipe(data):
 
 # CRUD function for getting recipes
 #==================================================
-def crud_get_recipes(uid, offset):
+def crud_get_recipes(uid):
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     data = []
-    sql = "SELECT rowid, * FROM recipe WHERE user_id='{}' LIMIT 10 OFFSET {}".format(uid, offset)
+    sql = "SELECT rowid, * FROM recipe WHERE user_id='{}'".format(uid)
     for row in c.execute(sql):
         data.append(list(row))
 
@@ -117,3 +117,43 @@ def crud_delete_item(rowid):
         print("An error occured: ", e.args[0])
 
     conn.close()
+
+
+# CRUD function for adding meal
+#===================================================
+def crud_add_meal(d, mt, rid, uid):
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    try:
+        cond = "WHERE day='{}' AND meal_type='{}' AND user_id={}".format(d, mt, uid)
+        query = "SELECT rowid, * FROM meal_planner {}".format(cond)
+        out = c.execute(query)
+        if out.fetchone():
+            sql = "UPDATE meal_planner SET recipe_id={} {}".format(rid, cond)
+        else:
+            values = "('{}','{}', '{}', '{}')".format(d, mt, rid, uid)
+            sql = "INSERT INTO meal_planner VALUES {}".format(values)
+            
+        c.execute(sql)
+        conn.commit()
+    except sqlite3.Error as e:
+        print("An error occured: ", e.args[0])
+
+    conn.close()    
+
+
+# CRUD function for getting meal
+#===================================================    
+def crud_get_meal(uid):
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    try:
+        sql = "SELECT rowid, * FROM meal_planner WHERE user_id={}".format(uid)
+        data = []
+        for row in c.execute(sql):
+            data.append(list(row))
+
+    except sqlite3.Error as e:
+        print("An error occured: ", e.args[0])
+        
+    return data
