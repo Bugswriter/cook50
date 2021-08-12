@@ -1,7 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container">
-  <h1>Cook50 is my project</h1>
-  <p>This is my project, I am writing just for hobby.</p>
+  <h3>Project I wrote for fun</h3>
+  <p>
+    <u>Cook50</u> is a virtualized, personalizable cookbook. <a href="{{ url_for('register') }}">Register</a> to use it.
+  </p>
+  <p>I got inspired by Tulsi Patel final project at CS50.
+    <center>
+      <iframe width="500" height="282" src="https://www.youtube.com/embed/0ufWK6WDiNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </center>
+  </p>
+  <h3>Features and Functionalities</h3>
+  <ul>
+    <li><u>Create accounts</u> - User can register and then login to start their session.</li>
+    <li><u>Recipe book</u> - User can add and view recipes.</li>
+    <li><u>Shopping List</u> - User can add items to shopping list.</li>
+    <li><u>Meal Planner</u> - User will get a meal calender, where they can add their recipes.</li>
+  </ul>
+  <h3>Technologies</h3>
+  <ul>
+    <li><u>Flask</u> - Backend is written in python framework <i>flask</i>.</li>
+    <li><u>Sqlite3</u> - SQL queries on <i>sqlite3</i> database is used to make CRUD functions.</li>
+    <li><u>Ajax</u> - <i>Ajax</i> is used to handle some GET/POST requests.</li>
+  </ul>
 </div>
 {% endblock content %}
